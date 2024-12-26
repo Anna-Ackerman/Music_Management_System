@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bands</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <div class="container">
+        <h1>Bands</h1>
+        <a th:href="@{/bands/add}" class="button">Add Band</a>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Genres</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="band : ${bands}">
+                    <td th:text="${band.id}"></td>
+                    <td th:text="${band.name}"></td>
+                    <td th:text="${band.genre.name}"></td> 
+                    <td>
+                        <a th:href="@{/bands/edit/{id}(id=${band.id})}" class="button edit">Edit</a>
+                        <a th:href="@{/bands/delete/{id}(id=${band.id})}" class="button delete">Delete</a>
+                    </td>
+                </tr>
+            </tbody>            
+        </table>
+        <a th:href="@{/home}" class="button back">Back to Home</a>
+    </div>
+</body>
+</html>
+

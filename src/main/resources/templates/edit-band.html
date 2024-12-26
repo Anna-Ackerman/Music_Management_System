@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Edit Band</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body>
+    <div class="container">
+        <h1>Edit Band</h1>
+        <form th:action="@{/bands/update/{id}(id=${band.id})}" th:object="${band}" method="post" class="form-container">
+            <input type="hidden" th:field="*{id}" />
+            <label for="name">Name:</label>
+            <input type="text" id="name" th:field="*{name}" required />
+            <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="error"></div>
+
+            <label for="genre">Genre:</label>
+            <select id="genre" th:field="*{genre.id}" required>
+                <option value="" disabled>Select Genre</option>
+                <option th:each="genre : ${genres}" th:value="${genre.id}" th:text="${genre.name}"></option>
+            </select>
+            <div th:if="${#fields.hasErrors('genre.id')}" th:errors="*{genre.id}" class="error"></div>
+
+            <button type="submit" class="button">Update</button>
+        </form>
+        <a href="/bands" class="button back">Back to Bands</a>
+    </div>
+</body>
+</html>
+

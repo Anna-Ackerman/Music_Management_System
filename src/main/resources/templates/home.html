@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Music Management</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
+</head>
+<body class="auth-page">
+    <div class="container" style="text-align: center;">
+        
+        <h1>Music Manager</h1>
+        <h2>Manage data on music genres, bands and songs with ease</h2>
+        <h2>Select to view:</h2>
+        
+        <div class="navigation">
+            <a th:href="@{/genres}" class="button">Genres</a>
+            <a th:href="@{/bands}" class="button">Bands</a>
+            <a th:href="@{/songs}" class="button">Songs</a>
+        </div>
+
+        <form th:action="@{/logout}" method="post" style="margin-top: 20px;">
+            <button type="submit" class="button logout" style="width: 120px;">Logout</button>
+        </form>
+        
+    </div>
+</body>
+</html>
